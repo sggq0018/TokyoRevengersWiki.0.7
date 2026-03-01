@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tokyo Revengers Wiki</title>
+
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Cinzel:wght@500;600&display=swap');
+
+/* ======================
+   BASE
+====================== */
+body{
+margin:0;
+font-family:'Poppins', sans-serif;
+background:
+linear-gradient(rgba(10,10,10,0.92), rgba(10,10,10,0.95)),
+url(https://e0.pxfuel.com/wallpapers/336/54/desktop-wallpaper-tokyo-revengers-symbol-art.jpg);
+background-size:cover;
+background-attachment:fixed;
+background-position:center;
+color:#f5f5f5;
+transition:0.4s ease;
+}
+
+/* ======================
+   HEADER
+====================== */
+header{
+background:rgba(15,15,15,0.85);
+backdrop-filter:blur(10px);
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 60px;
+border-bottom:1px solid rgba(198,164,74,0.2);
+}
+
+header h1{
+font-family:'Cinzel', serif;
+color:#c6a44a;
+font-size:28px;
+letter-spacing:2px;
+}
+
+nav a{
+color:#ddd;
+margin:0 15px;
+text-decoration:none;
+font-weight:500;
+transition:0.3s ease;
+}
+
+nav a:hover{
+color:#c6a44a;
+}
+
+/* ======================
+   SECCIONES
+====================== */
+section{
+display:none;
+padding:70px 80px;
+opacity:0;
+transform:translateY(30px);
+transition:0.6s ease;
+}
+
+section.active{
+display:block;
+opacity:1;
+transform:translateY(0);
+}
+
+h2{
+font-family:'Cinzel', serif;
+color:#c6a44a;
+font-weight:600;
+letter-spacing:1px;
+margin-bottom:40px;
+}
+
+/* ======================
+   GRID
+====================== */
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:30px;
+}
+
+/* ======================
+   CARD ESTILO MODERNO
+====================== */
+.card{
+background:rgba(20,20,20,0.75);
+border-radius:20px;
+padding:20px;
+text-align:center;
+backdrop-filter:blur(12px);
+box-shadow:0 8px 25px rgba(0,0,0,0.4);
+transition:0.35s ease;
+cursor:pointer;
+}
+
+.card:hover{
+transform:translateY(-8px);
+box-shadow:0 15px 35px rgba(198,164,74,0.25);
+}
+
+.card img{
+width:100%;
+height:220px;
+object-fit:contain;
+border-radius:16px;
+margin-bottom:15px;
+padding:10px;
+filter:drop-shadow(0 0 12px rgba(198,164,74,0.6));
+transition:0.3s ease;
+}
+
+.card:hover img{
+transform:scale(1.05);
+}
+
+.card h4{
+font-weight:500;
+letter-spacing:0.5px;
+}
+
+/* ======================
+   PERFIL
+====================== */
+#perfil{
+text-align:center;
+}
+
+#perfil img{
+width:320px;
+border-radius:20px;
+margin-bottom:25px;
+box-shadow:0 10px 30px rgba(0,0,0,0.6);
+}
+
+#perfilNombre{
+font-family:'Cinzel', serif;
+font-size:30px;
+color:#c6a44a;
+}
+
+/* ======================
+   BUSCADOR
+====================== */
+#buscador{
+width:100%;
+padding:14px 18px;
+border-radius:30px;
+border:none;
+outline:none;
+font-family:'Poppins', sans-serif;
+background:rgba(255,255,255,0.08);
+color:white;
+backdrop-filter:blur(10px);
+margin-bottom:40px;
+transition:0.3s ease;
+}
+
+#buscador:focus{
+background:rgba(255,255,255,0.12);
+box-shadow:0 0 0 2px rgba(198,164,74,0.4);
+}
+
+/* ======================
+   PANEL AJUSTES
+====================== */
+#ajustes{
+position:fixed;
+top:20px;
+left:20px;
+z-index:20;
+}
+
+#ajustes button{
+background:rgba(20,20,20,0.9);
+border:none;
+color:#c6a44a;
+padding:10px 14px;
+border-radius:12px;
+cursor:pointer;
+transition:0.3s ease;
+}
+
+#ajustes button:hover{
+background:#c6a44a;
+color:black;
+}
+
+#panel{
+display:none;
+margin-top:10px;
+background:rgba(15,15,15,0.95);
+padding:15px;
+border-radius:16px;
+box-shadow:0 10px 25px rgba(0,0,0,0.5);
+}
+
+#panel button{
+width:100%;
+margin:8px 0;
+padding:10px;
+border-radius:10px;
+border:none;
+background:rgba(255,255,255,0.05);
+color:white;
+transition:0.3s ease;
+}
+
+#panel button:hover{
+background:#c6a44a;
+color:black;
+}
+
+/* ======================
+   MODO CLARO
+====================== */
+.modoClaro{
+background:#f2f2f2;
+color:#111;
+}
+
+.modoClaro .card{
+background:white;
+color:#111;
+}
+
+.modoClaro header{
+background:white;
+}
+
+/* ======================
+   ANIMACIONES EXTRA
+====================== */
+
+/* Entrada del header */
+header{
+animation:fadeHeader 0.8s ease forwards;
+opacity:0;
+}
+
+@keyframes fadeHeader{
+from{
+opacity:0;
+transform:translateY(-20px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+/* Animación al activar sección */
+section.active{
+animation:fadeSection 0.6s ease forwards;
+}
+
+@keyframes fadeSection{
+from{
+opacity:0;
+transform:translateY(30px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+/* Aparición elegante de cards */
+.card{
+animation:fadeCard 0.6s ease forwards;
+opacity:0;
+}
+
+@keyframes fadeCard{
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+</style>
+</head>
+<body>
+
+<div id="ajustes">
+<button onclick="togglePanel()">⚙</button>
+<div id="panel">
+<button onclick="toggleModo()">Modo Claro / Oscuro</button>
+<button onclick="agrandar()">A+</button>
+<button onclick="achicar()">A-</button>
+<button onclick="modoTelefono()">Modo Teléfono</button>
+<button onclick="modoPC()">Modo Ordenador</button>
+</div>
+</div>
+
+<header>
+<h1>Tokyo Revengers</h1>
+<nav>
+<a onclick="mostrar('inicio')">Inicio</a>
+<a onclick="mostrar('personajes')">Personajes</a>
+<a onclick="mostrar('pandillas')">Pandillas</a>
+</nav>
+</header>
+
+<section id="inicio" class="active">
+<h2>Resumen</h2>
+<p>
+Tokyo Revengers sigue la historia de Takemichi Hanagaki, un joven que descubre que puede viajar 12 años al pasado.
+</p>
+<p>
+La historia mezcla acción, drama y conflictos entre pandillas como Toman, Black Dragons y Tenjiku.
+</p>
+</section>
+
+
+<section id="personajes">
+<h2>Personajes</h2>
+<input type="text" id="buscador" placeholder="Buscar personaje...">
+<div class="grid" id="listaPersonajes"></div>
+</section>
+
+<section id="pandillas">
+<h2>Pandillas</h2>
+<div class="grid" id="listaPandillas"></div>
+</section>
+
+<section id="perfil">
+<h2 id="perfilNombre"></h2>
+<img id="perfilImg">
+<p id="perfilDesc"></p>
+</section>
+
+<script>
+
+const personajes = [
+{nombre:"Takemichi Hanagaki", img:"https://i.pinimg.com/474x/cd/bc/52/cdbc52be15d9aad6c63c305851414b23.jpg"},
+{nombre:"Hinata Tachibana", img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRh-AAQaYag__ElQkXs1b1BqCC6BxTRLGuQrnrRDcHo8A&s=10"},
+{nombre:"Naoto Tachibana", img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQwBRC-5cYyMsy5GbzahfQyPNiQRN_yjI15nbYTlBi3w&s=10"},
+{nombre:"Manjiro Sano", img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFM-7--JC5qfjxsWMAwSlYkxrPZTFVak9xguP3gF5djA&s=10"},
+{nombre:"Ken Ryuguji", img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJR4fJEJZpzXDeE7z1FTXavNrnGZ6qRSWFzSrZHoeWQQ&s=10"},
+{nombre:"Keisuke Baji", img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYdA2Z6Ltr9-q7CzmT8mK3ZQUxQ_ISQ3_3NiChJH6ljA&s=10"},
+{nombre:"Chifuyu Matsuno", img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCvAihJEWUNGXU4LhiXKLoUlfnCcBa4AftOZ3bSXTQGA&s=10"},
+{nombre:"Takashi Mitsuya", img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGMTjaCTG0rQSH9q1WHxZN_VE8A5i_z9VI2R9TVAZNyw&s=10"},
+{nombre:"Kazutora Hanemiya", img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyNpL5HjMdj7kypGkeCG5iGNWSNiwDeAle9tYOKr6MdA&s=10"},
+{nombre:"Shuji Hanma", img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXBI-fEPu3QxzNTsGLqfJGAVldG2kJKqc_tHHz3iS51g&s=10"}
+];
+
+const lista = document.getElementById("listaPersonajes");
+
+personajes.forEach(p=>{
+const card=document.createElement("div");
+card.className="card";
+card.innerHTML=`<img src="${p.img}"><h4>${p.nombre}</h4>`;
+card.onclick=()=>abrirPerfil(p);
+lista.appendChild(card);
+});
+
+document.getElementById("buscador").addEventListener("input", function(){
+const filtro=this.value.toLowerCase();
+document.querySelectorAll("#listaPersonajes .card").forEach(c=>{
+c.style.display = c.textContent.toLowerCase().includes(filtro) ? "" : "none";
+});
+});
+
+function mostrar(id){
+document.querySelectorAll("section").forEach(s=>s.classList.remove("active"));
+document.getElementById(id).classList.add("active");
+}
+
+function abrirPerfil(p){
+document.getElementById("perfilNombre").textContent=p.nombre;
+document.getElementById("perfilImg").src=p.img;
+document.getElementById("perfilDesc").textContent="Información próximamente.";
+mostrar("perfil");
+}
+
+function togglePanel(){
+const panel = document.getElementById("panel");
+panel.style.display = panel.style.display==="block"?"none":"block";
+}
+
+function toggleModo(){
+document.body.classList.toggle("modoClaro");
+}
+
+function agrandar(){document.body.style.fontSize="larger";}
+function achicar(){document.body.style.fontSize="smaller";}
+function modoTelefono(){document.body.style.maxWidth="400px";document.body.style.margin="auto";}
+function modoPC(){document.body.style.maxWidth="100%";}
+
+const pandillas = [
+{
+nombre:"Toman",
+img:"https://upload.wikimedia.org/wikipedia/commons/b/b9/Flag_of_the_Tokyo_Manji_Gang.svg"
+},
+{
+nombre:"Valhalla",
+img:"https://i.pinimg.com/736x/91/46/1c/91461cb112f23b5068f01d51c919c895.jpg"
+},
+{
+nombre:"Moebius",
+img:"https://static.wikia.nocookie.net/tokyorevengers/images/4/43/Moebius_Logo.webp/revision/latest/thumbnail/width/360/height/360?cb=20210921221548&path-prefix=es"
+},
+{
+nombre:"Tenjiku",
+img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnNmgsc6IjPeOs-1yvSwW3E6uQJI8lr7p7YGrp-eMmmw&s=10"
+},
+{
+nombre:"Rokuhara Tandai",
+img:"https://i.pinimg.com/736x/81/75/02/8175022a5cffa74ab2fb76f8d99b0b14.jpg"
+},
+{
+nombre:"Brahman",
+img:"https://static.wikia.nocookie.net/tokyorevengers/images/b/b1/Brahman_Logo.webp/revision/latest?cb=20210912185034&path-prefix=es"
+},
+{
+nombre:"Black Dragons",
+img:"https://i.pinimg.com/736x/5c/7b/2e/5c7b2e01d2317a83d555e502f237cfb9.jpg"
+},
+{
+nombre:"Bonten",
+img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmAOKnx4IORYzQQCwIOtCYBdcwObfT78NSi9zv4ZclCA&s=10"
+}
+];
+
+const listaPandillas = document.getElementById("listaPandillas");
+
+pandillas.forEach(p=>{
+const card=document.createElement("div");
+card.className="card";
+
+card.innerHTML=`
+<img src="${p.img}" alt="${p.nombre}">
+<h4>${p.nombre}</h4>
+`;
+
+card.onclick=()=>{
+document.getElementById("perfilNombre").textContent=p.nombre;
+document.getElementById("perfilImg").src=p.img;
+document.getElementById("perfilDesc").textContent="Logo oficial de la pandilla.";
+mostrar("perfil");
+};
+
+listaPandillas.appendChild(card);
+});
+
+</script>
+
+</body>
+</html>
